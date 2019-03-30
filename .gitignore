@@ -1,0 +1,7 @@
+# Ignore everything in the volumes/letsencrypt folder, but keep the folder itself
+volumes/letsencrypt/*
+!volumes/letsencrypt/.gitkeep
+
+# Ignore everything in the volumes/lib folder, but keep the folder itself
+volumes/lib/*
+!volumes/lib/.gitkeep
