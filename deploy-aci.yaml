@@ -50,16 +50,16 @@ properties:
     azureFile:
       shareName: content
       storageAccountName: cdwtesting20190422
-      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+      storageAccountKey: XXX==
   - name: letsencrypt
     azureFile:
       shareName: letsencrypt
       storageAccountName: cdwtesting20190422
-      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+      storageAccountKey: XXX==
   - name: logs
     azureFile:
       shareName: logs
       storageAccountName: cdwtesting20190422
-      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+      storageAccountKey: XXX==
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
