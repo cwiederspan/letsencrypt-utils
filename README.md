@@ -12,6 +12,12 @@ az container create -g my-certbot-20190330 -n my-certbot-20190330 \
   --azure-file-volume-mount-path /etc/letsencrypt/
 
 
+az container exec -g my-certbot-20190330 -n my-certbot-20190330 --exec-command sh
+
+
+certbot certonly --manual -d something.com -d www.something.com -m somebody@something.com --no-eff-email --agree-tos --manual-public-ip-logging-ok --test-cert
+
+
 docker run -it --rm --name certbot \
   -v c:/projects/github/letsencrypt-utils/volumes/letsencrypt:/etc/letsencrypt \
   -v c:/projects/github/letsencrypt-utils/volumes/lib:/var/lib/letsencrypt \

@@ -1,0 +1,65 @@
+# https://github.com/MicrosoftDocs/azure-docs/issues/13140#issuecomment-411829237
+
+# NOTE: This doesn't work because of this - https://github.com/certbot/certbot/issues/4850
+# related to symlinks on the Azure File Shares
+
+apiVersion: 2018-10-01
+location: westus2
+name: cdw-certbot-20190422
+properties:
+  containers:
+  - name: certbot
+    properties:
+      image: certbot/certbot
+      command: 
+      - tail
+      - -f
+      - /dev/null
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      volumeMounts:
+      - name: content
+        mountPath: /var/www/html
+      - name: letsencrypt
+        mountPath: /etc/letsencrypt
+      - name: logs
+        mountPath: /var/log
+  - name: nginx
+    properties:
+      image: nginx
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.0
+      ports:
+      - port: 80
+      volumeMounts:
+      - name: content
+        mountPath: /usr/share/nginx/html
+  osType: Linux
+  ipAddress:
+    type: Public
+    dnsNameLabel: cdw-certbot-20190422
+    ports:
+    - protocol: tcp
+      port: '80'
+  volumes:
+  - name: content
+    azureFile:
+      shareName: content
+      storageAccountName: cdwtesting20190422
+      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+  - name: letsencrypt
+    azureFile:
+      shareName: letsencrypt
+      storageAccountName: cdwtesting20190422
+      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+  - name: logs
+    azureFile:
+      shareName: logs
+      storageAccountName: cdwtesting20190422
+      storageAccountKey: bwoUudCtmGcLSpHatQ95k4acfrRG/dsT5AWK7kTETANaYf3wJXufuolljG8N0AW3IcadiZTQbiQbTYhn9iZcLg==
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
