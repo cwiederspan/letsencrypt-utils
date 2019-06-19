@@ -22,6 +22,8 @@ openssl pkcs12 -export \
   -in cert.pem \
   -certfile chain.pem
 
+# Now, for example, upload the .pfx file to Azure App Gateway or API Management service.
+
 ```
 
 ## More Reading
