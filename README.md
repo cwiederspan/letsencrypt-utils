@@ -14,13 +14,13 @@ docker run -it --rm --name certbot \
   --agree-tos \
   --manual-public-ip-logging-ok
 
-cd ./volumes/letsencrypt/live/www.terrademo.com
+cd ./volumes/letsencrypt/archive/terrademo.com
 
 openssl pkcs12 -export \
   -out certificate.pfx \
-  -inkey privkey.pem \
-  -in cert.pem \
-  -certfile chain.pem
+  -inkey privkey1.pem \
+  -in cert1.pem \
+  -certfile chain1.pem
 
 # Now, for example, upload the .pfx file to Azure App Gateway or API Management service.
 
